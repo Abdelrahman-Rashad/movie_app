@@ -94,11 +94,11 @@ class _MyAppState extends State<MyApp> {
       //   ),
       // ),
       home: Scaffold(
-          backgroundColor: Colors.white,
-          // body: MovieWidget(movies: _movies),
-          body: MovieInfo() //_movies[0]),
-          // ),
-          ),
+        backgroundColor: Colors.white,
+        // body: MovieWidget(movies: _movies),
+        body: MovieInfo(_movies[8]),
+        // ),
+      ),
     );
   }
 }

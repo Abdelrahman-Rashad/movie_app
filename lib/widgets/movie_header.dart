@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../models/movie.dart';
 
 class MovieHeader extends StatelessWidget {
-  // final Movie movie;
+  final Movie movie;
 
-  // MovieHeader(this.movie);
+  MovieHeader(this.movie);
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +18,10 @@ class MovieHeader extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(
             color: Colors.blue,
-            // image: DecorationImage(
-            //   fit: BoxFit.cover,
-            // image: NetworkImage(movie.backdropImagePath),
-            // ),
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: NetworkImage(movie.backdropImagePath),
+            ),
           ),
         ),
       ),
@@ -58,7 +58,7 @@ class BoxShadowPainter extends CustomPainter {
     path.lineTo(size.width, 0);
     path.close();
 
-    canvas.drawShadow(path, Colors.black45, 20.0, false);
+    canvas.drawShadow(path, Colors.black45, 25.0, false);
   }
 
   @override
