@@ -17,7 +17,7 @@ class MovieHeader extends StatelessWidget {
           height: 300,
           width: double.infinity,
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: Colors.grey[200],
             image: DecorationImage(
               fit: BoxFit.cover,
               image: NetworkImage(movie.backdropImagePath),
