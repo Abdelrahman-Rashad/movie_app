@@ -6,6 +6,8 @@ class Movie {
   final String backdropImagePath;
   final String rating;
   final String originalLanguage;
+  final String releasedate;
+
   //the api have specific configuration for the images url more: https://developers.themoviedb.org/3/configuration/get-api-configuration
   static final String tempBaseUrl = 'https://image.tmdb.org/t/p/w500/';
 
@@ -17,6 +19,7 @@ class Movie {
     this.backdropImagePath,
     this.rating,
     this.originalLanguage,
+    this.releasedate,
   });
 
   factory Movie.fromJson(Map<String, dynamic> json) {
@@ -28,6 +31,7 @@ class Movie {
       year: json['release_date'],
       rating: json['vote_average'].toString(),
       originalLanguage: json['original_language'],
+      releasedate: json['release_date'],
     );
   }
 }

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:movie_app/widgets/title_ainmation.dart';
 import './widgets/movie_header.dart';
 import './widgets/movie_info.dart';
 import 'widgets/movie_list.dart';
@@ -77,7 +78,8 @@ class _MyAppState extends State<MyApp> {
       child: Scaffold(
         appBar: AppBar(
           title: Padding(
-              padding: EdgeInsets.fromLTRB(0, 8, 0, 0), child: Text('Movies')),
+              padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+              child: titelainmation(text: 'Movies')),
           actions: [
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 8, 8, 0),
