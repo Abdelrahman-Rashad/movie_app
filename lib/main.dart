@@ -4,12 +4,29 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import './widgets/movie_header.dart';
 import './widgets/movie_info.dart';
-import './widgets/movie_widget.dart';
+import 'widgets/movie_list.dart';
 
 import './models/movie.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MaterialApp(
+      initialRoute: '/home',
+      routes: {
+        //'/' : (context) => Loading(),
+        '/home': (context) => MyApp(),
+        '/movie': (context) => MovieInfo(),
+      },
+      debugShowCheckedModeBanner: false,
+      title: 'Movie App',
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        primaryColor: Colors.white,
+        accentColor: Colors.blue[800],
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -55,49 +72,36 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Movie App',
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
-        primaryColor: Colors.white,
-        accentColor: Colors.blue[800],
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      // home: DefaultTabController(
-      //   length: 3,
-      // child: Scaffold(
-      // appBar: AppBar(
-      //   title: Padding(
-      //       padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
-      //       child: Text('Movies')),
-      //   actions: [
-      //     Padding(
-      //       padding: const EdgeInsets.fromLTRB(0, 8, 8, 0),
-      //       child: IconButton(
-      //         icon: Icon(
-      //           Icons.search_rounded,
-      //         ),
-      //         onPressed: () {},
-      //       ),
-      //     ),
-      //   ],
-      //   elevation: 0,
-      //   bottom: TabBar(
-      //     indicatorSize: TabBarIndicatorSize.label,
-      //     labelPadding: EdgeInsets.symmetric(vertical: 10.0),
-      //     tabs: [
-      //       Text('Recommended'),
-      //       Text('Recent'),
-      //       Text('Popular'),
-      //     ],
-      //   ),
-      // ),
-      home: Scaffold(
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Padding(
+              padding: EdgeInsets.fromLTRB(0, 8, 0, 0), child: Text('Movies')),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 8, 8, 0),
+              child: IconButton(
+                icon: Icon(
+                  Icons.search_rounded,
+                ),
+                onPressed: () {},
+              ),
+            ),
+          ],
+          elevation: 0,
+          bottom: TabBar(
+            indicatorSize: TabBarIndicatorSize.label,
+            labelPadding: EdgeInsets.symmetric(vertical: 10.0),
+            tabs: [
+              Text('Recommended'),
+              Text('Recent'),
+              Text('Popular'),
+            ],
+          ),
+        ),
         backgroundColor: Colors.white,
-        // body: MovieWidget(movies: _movies),
-        body: MovieInfo(_movies[8]),
-        // ),
+        body: MovieWidget(movies: _movies),
       ),
     );
   }

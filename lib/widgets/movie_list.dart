@@ -16,6 +16,11 @@ class MovieWidget extends StatelessWidget {
         return ListTile(
           leading: Image.network(movie.posterImagePath),
           title: Text(movie.title),
+          onTap: () async {
+            Navigator.pushNamed(context, '/movie', arguments: {
+              'movie': movie,
+            });
+          },
         );
       },
       itemCount: movies.length,
