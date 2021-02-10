@@ -14,7 +14,7 @@ class MovieWidget extends StatelessWidget {
         final movie = movies[index];
 
         return ListTile(
-          leading: Image.network(movie.poster),
+          leading: Image.network(movie.posterImagePath),
           title: Text(movie.title),
         );
       },
