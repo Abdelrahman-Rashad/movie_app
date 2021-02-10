@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../models/movie.dart';
 
-class MovieWidget extends StatelessWidget {
+class MoviesList extends StatelessWidget {
   final List<Movie> movies;
 
-  MovieWidget({this.movies});
+  MoviesList({this.movies});
 
   @override
   Widget build(BuildContext context) {

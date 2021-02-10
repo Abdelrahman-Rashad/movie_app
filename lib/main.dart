@@ -101,7 +101,7 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
         backgroundColor: Colors.white,
-        body: MovieWidget(movies: _movies),
+        body: MoviesList(movies: _movies),
       ),
     );
   }
