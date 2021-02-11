@@ -9,6 +9,7 @@ class StarsRating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SmoothStarRating(
+      isReadOnly: true,
       color: Colors.amber[600],
       size: 20.0,
       starCount: 5,
