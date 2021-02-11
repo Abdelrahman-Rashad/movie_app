@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 import '../models/movie.dart';
+import './stars_rating.dart';
 
 class MoviesList extends StatelessWidget {
   final List<Movie> movies;
@@ -14,61 +14,62 @@ class MoviesList extends StatelessWidget {
       itemBuilder: (context, index) {
         final movie = movies[index];
 
-        return ListTile(
-          /*leading: Image.network(movie.posterImagePath),
-          title: Text(movie.title),
-          */
+        return InkWell(
           onTap: () async {
             Navigator.pushNamed(context, '/movie', arguments: {
               'movie': movie,
             });
           },
-          title: Row(
-            children: [
-              SizedBox(
-                width: 100,
-                child: ClipRRect(
-                  child: Image.network(movie.posterImagePath),
-                  borderRadius: BorderRadius.circular(15),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 8,
+              horizontal: 15,
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 100,
+                  child: ClipRRect(
+                    child: Image.network(movie.posterImagePath),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
                 ),
-              ),
-              Flexible(
-                  child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      movie.title,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, letterSpacing: 0.4),
+                Flexible(
+                  child: Container(
+                    padding: EdgeInsets.only(left: 15, top: 10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          movie.title,
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 0.4,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        StarsRating(movieRating: movie.rating),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        Text(
+                          movie.releasedate,
+                          style: TextStyle(
+                              color: Colors.black.withOpacity(0.5),
+                              fontSize: 13.0,
+                              letterSpacing: 0.8),
+                        )
+                      ],
                     ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    SmoothStarRating(
-                      color: Colors.amber,
-                      size: 15.0,
-                      starCount: 5,
-                      rating: (double.parse(movie.rating) / 2),
-                      spacing: 5.0,
-                      allowHalfRating: true,
-                      borderColor: Colors.yellow[800],
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    Text(
-                      movie.releasedate,
-                      style: TextStyle(
-                          color: Colors.black.withOpacity(0.5),
-                          fontSize: 10.0,
-                          letterSpacing: 0.8),
-                    )
-                  ],
+                  ),
                 ),
-              ))
-            ],
+              ],
+            ),
           ),
         );
       },

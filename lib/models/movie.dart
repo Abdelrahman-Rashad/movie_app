@@ -7,6 +7,8 @@ class Movie {
   final String rating;
   final String originalLanguage;
   final String releasedate;
+  final List genreIdList;
+  static Map<int, String> genres;
 
   //the api have specific configuration for the images url more: https://developers.themoviedb.org/3/configuration/get-api-configuration
   static final String tempBaseUrl = 'https://image.tmdb.org/t/p/w500/';
@@ -20,6 +22,7 @@ class Movie {
     this.rating,
     this.originalLanguage,
     this.releasedate,
+    this.genreIdList,
   });
 
   factory Movie.fromJson(Map<String, dynamic> json) {
@@ -32,6 +35,17 @@ class Movie {
       rating: json['vote_average'].toString(),
       originalLanguage: json['original_language'],
       releasedate: json['release_date'],
+      genreIdList: json['genre_ids'],
     );
+  }
+
+  String getMovieGenres() {
+    String movieGenres = '';
+    var list = genreIdList;
+    print(genres);
+    list.forEach((element) {
+      movieGenres += (genres[element].toString() + ', ');
+    });
+    return movieGenres.substring(0, movieGenres.length - 2);
   }
 }

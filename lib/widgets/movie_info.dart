@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:movie_app/widgets/stars_rating.dart';
 
 import '../models/movie.dart';
 import './movie_header.dart';
@@ -73,9 +77,11 @@ class _MovieInfoState extends State<MovieInfo> {
               ),
               SizedBox(height: 10),
               Text(
-                'movie genres',
+                movie.getMovieGenres(),
                 style: description,
               ),
+              SizedBox(height: 20),
+              StarsRating(movieRating: movie.rating),
               SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.all(8),
