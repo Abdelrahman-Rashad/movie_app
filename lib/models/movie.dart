@@ -29,8 +29,8 @@ class Movie {
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
       id: json['id'],
-      posterImagePath: tempBaseUrl + json['poster_path'],
-      backdropImagePath: tempBaseUrl + json['backdrop_path'],
+      posterImagePath: tempBaseUrl + json['poster_path'].toString(),
+      backdropImagePath: tempBaseUrl + json['backdrop_path'].toString(),
       title: json['title'],
       year: json['release_date'],
       rating: json['vote_average'].toString(),
