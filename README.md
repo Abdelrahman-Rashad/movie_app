@@ -1,6 +1,6 @@
 # movie_app
 
-A movie app made using flutter that displays movies using The Movie Database api. 
+A movie app made using flutter that displays movie's info using The Movie Database api. 
 
 ## Getting Started
 
